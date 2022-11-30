@@ -1,0 +1,76 @@
+.overlay {
+	position: fixed;
+	inset: 0 0 0 0;
+	z-index: 3;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.drawer {
+	padding: 30px;
+	width: 385px;
+	height: 100%;
+	overflow-y: auto;
+	position: fixed;
+	inset: 0 0 0 auto;
+	z-index: 4;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+}
+
+.top {
+	margin-bottom: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.title {
+	font-weight: 700;
+	font-size: 24px;
+}
+
+.close {
+	background-color: transparent;
+	display: grid;
+	place-items: center;
+	font-size: 30px;
+	transition: color 0.2s ease-in-out;
+
+	@media (any-hover: hover) {
+		&:hover {
+			color: #9dd458;
+		}
+	}
+}
+
+.cardsWrapper {
+	margin-bottom: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px;
+}
+
+.bottom {
+	margin-top: auto;
+
+	ul {
+		margin-bottom: 30px;
+	}
+
+	ul li {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-size: 16px;
+
+		&:not(:last-child) {
+			margin-bottom: 10px;
+		}
+
+		span {
+			font-weight: 600;
+		}
+	}
+}
