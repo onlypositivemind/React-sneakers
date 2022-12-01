@@ -17,20 +17,30 @@
 .searchBlock {
 	width: 250px;
 	height: 45px;
-	border: 2px solid var(--border-color-main);
-	border-radius: 10px;
 	display: flex;
 	align-items: center;
+	position: relative;
 
 	img {
 		display: inline-block;
-		padding: 0 15px;
 		cursor: pointer;
+		position: absolute;
+		top: 50%;
+		left: 8px;
+		transform: translateY(-50%);
 	}
 
 	input {
-		padding: 10px;
+		padding: 10px 10px 10px 30px;
 		width: 100%;
+		height: 100%;
+		border: 2px solid var(--border-color-main);
+		border-radius: 10px;
+		transition: border 0.3s ease-in-out;
+
+		&:focus {
+			border-color: var(--button-color-main);
+		}
 	}
 }
 
