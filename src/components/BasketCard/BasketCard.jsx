@@ -1,5 +1,5 @@
 import IMGTest from '../../shared/images/2.jpg';
-import Delete from '../../shared/images/icons/btn-remove.svg';
+import DeleteSVG from '../../shared/images/icons/btn-remove.svg';
 import s from './BasketCard.module.scss';
 
 const BasketCard = () => {
@@ -10,7 +10,7 @@ const BasketCard = () => {
 				<p className={s.title}>Мужские Кроссовки Nike Air Max 270</p>
 				<p className={s.price}>12 999 руб.</p>
 			</div>
-			<img className={s.delete} src={Delete} alt="Delete button" />
+			<img className={s.delete} src={DeleteSVG} alt="Delete button" />
 		</div>
 	);
 };

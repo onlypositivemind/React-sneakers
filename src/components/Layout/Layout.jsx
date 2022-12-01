@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import Basket from '../Basket/Basket';
 import Logo from '../../shared/images/logo.png';
 import BasketSVG from '../../shared/images/icons/basket.svg';
@@ -13,25 +13,34 @@ const Layout = () => {
 			<Basket />
 			
 			<header className={s.header}>
+				
 				<div className={s.headerLeft}>
-					<img src={Logo} alt="Logo" />
+					<NavLink to="/">
+						<img src={Logo} alt="Logo" />
+					</NavLink>
 					<div>
 						<h1>REACT SNEAKERS</h1>
 						<h2>Магазин кроссовок</h2>
 					</div>
 				</div>
+				
 				<ul className={s.headerRight}>
 					<li>
 						<img src={BasketSVG} alt="Basket" />
 						<span className={s.count}>1205 руб.</span>
 					</li>
 					<li>
-						<img src={HeartSVG} alt="Favourites" />
+						<NavLink to="/favorites">
+							<img src={HeartSVG} alt="Favorites" />
+						</NavLink>
 					</li>
 					<li>
-						<img src={UserSVG} alt="Profile" />
+						<NavLink to="/orders">
+							<img src={UserSVG} alt="Orders" />
+						</NavLink>
 					</li>
 				</ul>
+			
 			</header>
 			
 			<main>
