@@ -3,6 +3,7 @@
 	inset: 0 0 0 0;
 	z-index: 3;
 	background-color: rgba(0, 0, 0, 0.7);
+	cursor: pointer;
 }
 
 .drawer {
@@ -16,6 +17,7 @@
 	background-color: #fff;
 	display: flex;
 	flex-direction: column;
+	cursor: default;
 }
 
 .top {
@@ -27,19 +29,19 @@
 
 .title {
 	font-weight: 700;
-	font-size: 24px;
+	font-size: var(--font-size-xl);
 }
 
 .close {
 	background-color: transparent;
 	display: grid;
 	place-items: center;
-	font-size: 30px;
+	font-size: var(--font-size-xxl);
 	transition: color 0.2s ease-in-out;
 
 	@media (any-hover: hover) {
 		&:hover {
-			color: #9dd458;
+			color: var(--button-color-main);
 		}
 	}
 }
@@ -63,7 +65,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		font-size: 16px;
+		font-size: var(--font-size-m);
 
 		&:not(:last-child) {
 			margin-bottom: 10px;

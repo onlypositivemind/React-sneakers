@@ -17,7 +17,7 @@ const Layout = () => {
 					<img src={Logo} alt="Logo" />
 					<div>
 						<h1>REACT SNEAKERS</h1>
-						<h2>Магазин лучших кроссовок</h2>
+						<h2>Магазин кроссовок</h2>
 					</div>
 				</div>
 				<ul className={s.headerRight}>

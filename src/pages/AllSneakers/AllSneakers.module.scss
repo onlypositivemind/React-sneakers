@@ -3,7 +3,7 @@
 
 	h2 {
 		font-weight: 700;
-		font-size: 32px;
+		font-size: var(--font-size-xxl);
 	}
 }
 
@@ -17,7 +17,7 @@
 .searchBlock {
 	width: 250px;
 	height: 45px;
-	border: 2px solid #f3f3f3;
+	border: 2px solid var(--border-color-main);
 	border-radius: 10px;
 	display: flex;
 	align-items: center;

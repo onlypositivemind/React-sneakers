@@ -16,8 +16,6 @@ const AllSneakers = () => {
 				<MainCard />
 				<MainCard />
 				<MainCard />
-				<MainCard />
-			
 			</div>
 		</section>
 	);

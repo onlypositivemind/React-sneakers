@@ -17,8 +17,8 @@ const Basket = () => {
 				</div>
 				<div className={s.bottom}>
 					<ul>
-						<li>Итого: <span>21 498 руб.</span></li>
-						<li>Налог 5%: <span>1074 руб.</span></li>
+						<li>Итого:<span>21 498 руб.</span></li>
+						<li>Налог 5%:<span>1074 руб.</span></li>
 					</ul>
 					<Button>Оформить заказ</Button>
 				</div>

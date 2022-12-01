@@ -2,7 +2,7 @@
 	padding: 20px;
 	width: 210px;
 	height: 260px;
-	border: 2px solid #f3f3f3;
+	border: 2px solid var(--border-color-main);
 	border-radius: 40px;
 	display: flex;
 	flex-direction: column;
@@ -24,7 +24,7 @@
 }
 
 .title {
-	line-height: 15px;
+	line-height: var(--font-line-s);
 }
 
 .cardBottom {
@@ -36,8 +36,8 @@
 .priceTitle {
 	margin-bottom: 4px;
 	font-weight: 500;
-	font-size: 11px;
-	color: #bdbdbd;
+	font-size: var(--font-size-xs);
+	color: var(--subtitle-color-main);
 }
 
 .priceValue {
