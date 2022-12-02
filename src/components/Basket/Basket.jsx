@@ -2,20 +2,20 @@ import BasketCard from '../../components/BasketCard/BasketCard';
 import Button from '../../components/Button/Button';
 import s from './Basket.module.scss';
 
-const Basket = ({ isOpen, basketCloseHandler }) => {
+const Basket = ({ isOpen, basketVisibilityHandler }) => {
 	
 	const stopPropagation = event => {
 		event.stopPropagation();
 	};
 	
 	return isOpen && (
-		<div className={s.overlay} onClick={basketCloseHandler}>
+		<div className={s.overlay} onClick={basketVisibilityHandler}>
 			<div className={s.drawer} onClick={stopPropagation}>
 				<div className={s.top}>
 					<p className={s.title}>Корзина</p>
 					<button
 						className={s.close}
-						onClick={basketCloseHandler}
+						onClick={basketVisibilityHandler}
 					>
 						&#128939;
 					</button>

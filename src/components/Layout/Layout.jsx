@@ -8,34 +8,34 @@ import UserSVG from '../../shared/images/icons/user.svg';
 import s from './Layout.module.scss';
 
 const Layout = () => {
-	
 	const [isOpen, setIsOpen] = useState(false);
-	const basketOpenHandler = () => {
-		setIsOpen(true);
-	};
-	const basketCloseHandler = () => {
-		setIsOpen(false);
+	
+	const basketVisibilityHandler = () => {
+		setIsOpen(!isOpen);
 	};
 	
 	return (
 		<div className={s.wrapper}>
 			
-			<Basket isOpen={isOpen} basketCloseHandler={basketCloseHandler} />
+			<Basket
+				isOpen={isOpen}
+				basketVisibilityHandler={basketVisibilityHandler}
+			/>
 			
 			<header className={s.header}>
 				
-				<div className={s.headerLeft}>
-					<NavLink to="/">
+				<NavLink to="/">
+					<div className={s.headerLeft}>
 						<img src={Logo} alt="Logo" />
-					</NavLink>
-					<div>
-						<h1>REACT SNEAKERS</h1>
-						<h2>Магазин кроссовок</h2>
+						<div>
+							<h1>REACT SNEAKERS</h1>
+							<h2>Магазин кроссовок</h2>
+						</div>
 					</div>
-				</div>
+				</NavLink>
 				
 				<ul className={s.headerRight}>
-					<li onClick={basketOpenHandler}>
+					<li onClick={basketVisibilityHandler}>
 						<img src={BasketSVG} alt="Basket" />
 						<span className={s.count}>1205 руб.</span>
 					</li>
