@@ -1,16 +1,13 @@
-// eslint-disable-next-line no-unused-vars
-import BasketCard from '../../components/BasketCard/BasketCard';
 import Button from '../../components/Button/Button';
 import BasketImg from '../../shared/images/basket.jpg';
+// eslint-disable-next-line no-unused-vars
+import BasketCard from '../../components/BasketCard/BasketCard';
 import s from './Basket.module.scss';
 
-const Basket = ({
-	isOpen,
-	basketVisibilityHandler,
-}) => {
+const Basket = ({ isOpen, basketVisibilityHandler, }) => {
 	
-	const stopPropagation = event => {
-		event.stopPropagation();
+	const stopPropagation = e => {
+		e.stopPropagation();
 	};
 	
 	return isOpen && (
@@ -27,7 +24,7 @@ const Basket = ({
 				</div>
 				
 				{
-					!isOpen
+					!false
 						? <div className={s.template}>
 							<img src={BasketImg} alt="Basket" />
 							<p className={s.templateTitle}>Корзина пустая</p>

@@ -18,16 +18,8 @@ function App() {
 	return (
 		<>
 			<Routes>
-				<Route path="/" element={
-					<Layout
-						sneakersData={sneakersData}
-					/>
-				}>
-					<Route index element={
-						<AllSneakers
-							sneakersData={sneakersData}
-						/>}
-					/>
+				<Route path="/" element={<Layout sneakersData={sneakersData} />}>
+					<Route index element={<AllSneakers sneakersData={sneakersData} />} />
 					<Route path="favorites" element={<Favorites />} />
 					<Route path="orders" element={<Orders />} />
 					<Route path="*" element={<NotFound />} />

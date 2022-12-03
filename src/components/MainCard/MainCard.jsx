@@ -9,7 +9,8 @@ const MainCard = ({
 	name,
 	price,
 	imageURL,
-	id,
+	inFavorite,
+	inBasket,
 }) => {
 	const [selected, setSelected] = useState(false);
 	const [favorite, setFavorite] = useState(false);
@@ -25,7 +26,7 @@ const MainCard = ({
 	return (
 		<div className={s.cardWrapper}>
 			<img
-				src={favorite ? LikedSVG : UnLikedSVG}
+				src={inFavorite ? LikedSVG : UnLikedSVG}
 				className={s.topBtn}
 				alt="Add to favorite"
 				onClick={favoriteHandler}
@@ -38,7 +39,7 @@ const MainCard = ({
 					<p className={s.priceValue}>{price} руб.</p>
 				</div>
 				<img
-					src={selected ? SelectedSVG : UnSelectedSVG}
+					src={inBasket ? SelectedSVG : UnSelectedSVG}
 					className={s.bottomBtn}
 					alt="Add to basket"
 					onClick={selectHandler}

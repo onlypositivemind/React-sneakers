@@ -9,6 +9,7 @@ import s from './Layout.module.scss';
 
 const Layout = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	
 	const basketVisibilityHandler = () => {
 		setIsOpen(!isOpen);
 	};

@@ -1,7 +1,7 @@
 import DeleteSVG from '../../shared/images/icons/btn-remove.svg';
 import s from './BasketCard.module.scss';
 
-const BasketCard = ({ id, name, price, imageURL }) => {
+const BasketCard = ({ name, price, imageURL }) => {
 	return (
 		<div className={s.cardWrapper}>
 			<img className={s.sneakersImage} src={imageURL} alt="Sneakers" />
