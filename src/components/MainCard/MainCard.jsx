@@ -5,7 +5,12 @@ import UnSelectedSVG from '../../shared/images/icons/btn-plus.svg';
 import SelectedSVG from '../../shared/images/icons/btn-checked.svg';
 import s from './MainCard.module.scss';
 
-const MainCard = ({ name, price, imageURL }) => {
+const MainCard = ({
+	name,
+	price,
+	imageURL,
+	id,
+}) => {
 	const [selected, setSelected] = useState(false);
 	const [favorite, setFavorite] = useState(false);
 	

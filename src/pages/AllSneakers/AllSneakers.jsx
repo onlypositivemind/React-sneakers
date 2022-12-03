@@ -1,16 +1,8 @@
-import { useState, useEffect } from 'react';
 import MainCard from '../../components/MainCard/MainCard';
 import SearchSVG from '../../shared/images/icons/search.svg';
 import s from './AllSneakers.module.scss';
 
-const AllSneakers = () => {
-	const [sneakersData, setSneakersData] = useState([]);
-	
-	useEffect(() => {
-		fetch('https://638a04874eccb986e8a12dca.mockapi.io/all-sneakers')
-		.then(response => response.json())
-		.then(json => setSneakersData(json));
-	}, []);
+const AllSneakers = ({ sneakersData, }) => {
 	
 	return (
 		<section className={s.content}>
@@ -22,8 +14,9 @@ const AllSneakers = () => {
 				</div>
 			</div>
 			<div className={s.cards}>
-				{sneakersData.map(item => <MainCard
+				{!!sneakersData.length && sneakersData.map(item => <MainCard
 						key={item.id}
+						id={item.id}
 						name={item.name}
 						price={item.price}
 						imageURL={item.imageURL}
