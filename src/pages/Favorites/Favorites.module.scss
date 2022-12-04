@@ -21,3 +21,13 @@
 	font-size: var(--font-size-m);
 	color: var(--subtitle-color-main)
 }
+
+.favorites {
+	padding: 0 60px;
+
+	h2 {
+		margin-bottom: 40px;
+		font-weight: 700;
+		font-size: var(--font-size-xxl);
+	}
+}

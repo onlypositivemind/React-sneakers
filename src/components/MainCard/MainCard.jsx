@@ -10,17 +10,30 @@ const MainCard = ({
 	name,
 	price,
 	imageURL,
+	favorited = false,
 	addItemToBasket,
+	deleteItemFromBasket,
+	addItemToFavorite,
+	deleteItemFromFavorite,
 }) => {
 	const [selected, setSelected] = useState(false);
-	const [favorite, setFavorite] = useState(false);
+	const [favorite, setFavorite] = useState(favorited);
 	
 	const selectHandler = (id) => {
+		if (!selected) {
+			addItemToBasket(id);
+		} else {
+			deleteItemFromBasket(id);
+		}
 		setSelected(!selected);
-		addItemToBasket(id);
 	};
 	
 	const favoriteHandler = (id) => {
+		if (!favorite) {
+			addItemToFavorite(id);
+		} else {
+			deleteItemFromFavorite(id);
+		}
 		setFavorite(!favorite);
 	};
 	

@@ -1,10 +1,12 @@
 .content {
 	padding-top: clamp(1.875rem, calc(-2.599rem + 22.37vw), 12.5rem);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .title, .subtitle {
 	margin-bottom: 30px;
-	text-align: center;
 }
 
 .title {

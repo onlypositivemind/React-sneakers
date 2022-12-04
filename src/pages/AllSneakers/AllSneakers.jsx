@@ -3,10 +3,16 @@ import MainCard from '../../components/MainCard/MainCard';
 import SearchSVG from '../../shared/images/icons/search.svg';
 import s from './AllSneakers.module.scss';
 
-const AllSneakers = ({ sneakersData, addItemToBasket }) => {
+const AllSneakers = ({
+	sneakersData,
+	addItemToBasket,
+	deleteItemFromBasket,
+	addItemToFavorite,
+	deleteItemFromFavorite
+}) => {
 	const [searchValue, setSearchValue] = useState('');
 	
-	const searchInputHandler = e => {
+	const searchInputHandler = (e) => {
 		setSearchValue(e.target.value);
 	};
 	
@@ -32,16 +38,16 @@ const AllSneakers = ({ sneakersData, addItemToBasket }) => {
 					/>
 				</div>
 			</div>
-			<div className={s.cards}>
+			<div className="cards-wrapper">
 				{!!sneakersData.length && sneakersData
 				.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()))
 				.map(item => <MainCard
 						key={item.id}
-						id={item.id}
-						name={item.name}
-						price={item.price}
-						imageURL={item.imageURL}
+						{...item}
 						addItemToBasket={addItemToBasket}
+						deleteItemFromBasket={deleteItemFromBasket}
+						addItemToFavorite={addItemToFavorite}
+						deleteItemFromFavorite={deleteItemFromFavorite}
 					/>
 				)}
 			</div>

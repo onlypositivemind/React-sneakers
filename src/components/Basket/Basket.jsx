@@ -10,7 +10,7 @@ const Basket = ({
 	deleteItemFromBasket
 }) => {
 	
-	const stopPropagation = e => {
+	const stopPropagation = (e) => {
 		e.stopPropagation();
 	};
 	
