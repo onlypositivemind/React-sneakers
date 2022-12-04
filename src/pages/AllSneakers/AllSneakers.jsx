@@ -3,21 +3,25 @@ import MainCard from '../../components/MainCard/MainCard';
 import SearchSVG from '../../shared/images/icons/search.svg';
 import s from './AllSneakers.module.scss';
 
-const AllSneakers = ({ sneakersData, setSneakersData }) => {
+const AllSneakers = ({ sneakersData, addItemToBasket }) => {
 	const [searchValue, setSearchValue] = useState('');
 	
 	const searchInputHandler = e => {
 		setSearchValue(e.target.value);
 	};
 	
+	const clearSearchInput = () => {
+		setSearchValue('');
+	};
+	
 	return (
 		<section className={s.content}>
 			<div className={s.top}>
-				<h2>{searchValue ? `Поиск: ${searchValue}` : 'Все кроссовки'}</h2>
+				<h2>Все кроссовки</h2>
 				<div className={s.searchBlock}>
 					<img src={SearchSVG} alt="Search icon" />
 					{searchValue &&
-						<button onClick={() => setSearchValue('')}>
+						<button onClick={clearSearchInput}>
 							&#128939;
 						</button>}
 					<input
@@ -37,8 +41,7 @@ const AllSneakers = ({ sneakersData, setSneakersData }) => {
 						name={item.name}
 						price={item.price}
 						imageURL={item.imageURL}
-						inFavorite={item.inFavorite}
-						inBasket={item.inBasket}
+						addItemToBasket={addItemToBasket}
 					/>
 				)}
 			</div>

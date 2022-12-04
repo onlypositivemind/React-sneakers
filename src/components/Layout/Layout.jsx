@@ -7,7 +7,7 @@ import HeartSVG from '../../shared/images/icons/heart.svg';
 import UserSVG from '../../shared/images/icons/user.svg';
 import s from './Layout.module.scss';
 
-const Layout = () => {
+const Layout = ({ basketItems, deleteItemFromBasket }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	
 	const basketVisibilityHandler = () => {
@@ -20,6 +20,8 @@ const Layout = () => {
 			<Basket
 				isOpen={isOpen}
 				basketVisibilityHandler={basketVisibilityHandler}
+				basketItems={basketItems}
+				deleteItemFromBasket={deleteItemFromBasket}
 			/>
 			
 			<header className={s.header}>
@@ -37,7 +39,7 @@ const Layout = () => {
 				<ul className={s.headerRight}>
 					<li onClick={basketVisibilityHandler}>
 						<img src={BasketSVG} alt="Basket" />
-						<span className={s.count}>1205 руб.</span>
+						<span className={s.count}>0 руб.</span>
 					</li>
 					<li>
 						<NavLink to="/favorites">

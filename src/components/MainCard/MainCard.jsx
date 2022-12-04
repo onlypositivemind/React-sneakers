@@ -6,30 +6,31 @@ import SelectedSVG from '../../shared/images/icons/btn-checked.svg';
 import s from './MainCard.module.scss';
 
 const MainCard = ({
+	id,
 	name,
 	price,
 	imageURL,
-	inFavorite,
-	inBasket,
+	addItemToBasket,
 }) => {
 	const [selected, setSelected] = useState(false);
 	const [favorite, setFavorite] = useState(false);
 	
-	const selectHandler = () => {
+	const selectHandler = (id) => {
 		setSelected(!selected);
+		addItemToBasket(id);
 	};
 	
-	const favoriteHandler = () => {
+	const favoriteHandler = (id) => {
 		setFavorite(!favorite);
 	};
 	
 	return (
 		<div className={s.cardWrapper}>
 			<img
-				src={inFavorite ? LikedSVG : UnLikedSVG}
+				src={favorite ? LikedSVG : UnLikedSVG}
 				className={s.topBtn}
 				alt="Add to favorite"
-				onClick={favoriteHandler}
+				onClick={() => favoriteHandler(id)}
 			/>
 			<img src={imageURL} alt="Sneakers" className={s.image} />
 			<p className={s.title}>{name}</p>
@@ -39,10 +40,10 @@ const MainCard = ({
 					<p className={s.priceValue}>{price} руб.</p>
 				</div>
 				<img
-					src={inBasket ? SelectedSVG : UnSelectedSVG}
+					src={selected ? SelectedSVG : UnSelectedSVG}
 					className={s.bottomBtn}
 					alt="Add to basket"
-					onClick={selectHandler}
+					onClick={() => selectHandler(id)}
 				/>
 			</div>
 		</div>

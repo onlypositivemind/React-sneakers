@@ -1,10 +1,14 @@
 import Button from '../../components/Button/Button';
 import BasketImg from '../../shared/images/basket.jpg';
-// eslint-disable-next-line no-unused-vars
 import BasketCard from '../../components/BasketCard/BasketCard';
 import s from './Basket.module.scss';
 
-const Basket = ({ isOpen, basketVisibilityHandler, }) => {
+const Basket = ({
+	isOpen,
+	basketVisibilityHandler,
+	basketItems,
+	deleteItemFromBasket
+}) => {
 	
 	const stopPropagation = e => {
 		e.stopPropagation();
@@ -24,7 +28,7 @@ const Basket = ({ isOpen, basketVisibilityHandler, }) => {
 				</div>
 				
 				{
-					!false
+					!basketItems.length
 						? <div className={s.template}>
 							<img src={BasketImg} alt="Basket" />
 							<p className={s.templateTitle}>Корзина пустая</p>
@@ -32,17 +36,18 @@ const Basket = ({ isOpen, basketVisibilityHandler, }) => {
 								Добавьте хотя бы одну пару
 								кроссовок, чтобы сделать заказ
 							</p>
-							<Button>Закрыть корзину</Button>
+							<Button onClick={basketVisibilityHandler}>Закрыть корзину</Button>
 						</div>
 						: <div className={s.content}>
 							<div className={s.cardsWrapper}>
-								{/*{sneakersInBasket.map(item => <BasketCard*/}
-								{/*	key={item.id}*/}
-								{/*	id={item.id}*/}
-								{/*	name={item.name}*/}
-								{/*	price={item.price}*/}
-								{/*	imageURL={item.imageURL}*/}
-								{/*/>)}*/}
+								{basketItems.map(item => <BasketCard
+									key={item.id}
+									id={item.id}
+									name={item.name}
+									price={item.price}
+									imageURL={item.imageURL}
+									deleteItemFromBasket={deleteItemFromBasket}
+								/>)}
 							</div>
 							<div className={s.bottom}>
 								<ul>
