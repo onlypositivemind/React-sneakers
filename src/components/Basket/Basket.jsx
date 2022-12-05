@@ -42,11 +42,8 @@ const Basket = ({
 							<div className={s.cardsWrapper}>
 								{basketItems.map(item => <BasketCard
 									key={item.id}
-									id={item.id}
-									name={item.name}
-									price={item.price}
-									imageURL={item.imageURL}
 									deleteItemFromBasket={deleteItemFromBasket}
+									{...item}
 								/>)}
 							</div>
 							<div className={s.bottom}>

@@ -10,14 +10,15 @@ const MainCard = ({
 	name,
 	price,
 	imageURL,
-	favorited = false,
+	inBasket = false,
+	inFavorite = false,
 	addItemToBasket,
 	deleteItemFromBasket,
 	addItemToFavorite,
 	deleteItemFromFavorite,
 }) => {
-	const [selected, setSelected] = useState(false);
-	const [favorite, setFavorite] = useState(favorited);
+	const [selected, setSelected] = useState(inBasket);
+	const [favorite, setFavorite] = useState(inFavorite);
 	
 	const selectHandler = (id) => {
 		if (!selected) {

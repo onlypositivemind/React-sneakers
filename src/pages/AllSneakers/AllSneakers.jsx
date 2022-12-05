@@ -2,13 +2,17 @@ import { useState } from 'react';
 import MainCard from '../../components/MainCard/MainCard';
 import SearchSVG from '../../shared/images/icons/search.svg';
 import s from './AllSneakers.module.scss';
+import CardLoader from '../../components/CardLoader/CardLoader';
 
 const AllSneakers = ({
 	sneakersData,
+	basketItems,
+	favoritesItems,
 	addItemToBasket,
 	deleteItemFromBasket,
 	addItemToFavorite,
-	deleteItemFromFavorite
+	deleteItemFromFavorite,
+	isLoading,
 }) => {
 	const [searchValue, setSearchValue] = useState('');
 	
@@ -39,17 +43,22 @@ const AllSneakers = ({
 				</div>
 			</div>
 			<div className="cards-wrapper">
-				{!!sneakersData.length && sneakersData
-				.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()))
-				.map(item => <MainCard
-						key={item.id}
-						{...item}
-						addItemToBasket={addItemToBasket}
-						deleteItemFromBasket={deleteItemFromBasket}
-						addItemToFavorite={addItemToFavorite}
-						deleteItemFromFavorite={deleteItemFromFavorite}
-					/>
-				)}
+				{
+					isLoading
+						? <CardLoader />
+						: sneakersData
+						.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()))
+						.map(item => <MainCard
+							key={item.id}
+							inBasket={basketItems.some(obj => obj.id === item.id)}
+							inFavorite={favoritesItems.some(obj => obj.id === item.id)}
+							addItemToBasket={addItemToBasket}
+							deleteItemFromBasket={deleteItemFromBasket}
+							addItemToFavorite={addItemToFavorite}
+							deleteItemFromFavorite={deleteItemFromFavorite}
+							{...item}
+						/>)
+				}
 			</div>
 		</section>
 	);

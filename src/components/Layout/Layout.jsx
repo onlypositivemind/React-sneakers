@@ -11,6 +11,7 @@ const Layout = ({ basketItems, deleteItemFromBasket }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	
 	const basketVisibilityHandler = () => {
+		!isOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = null;
 		setIsOpen(!isOpen);
 	};
 	
@@ -39,7 +40,7 @@ const Layout = ({ basketItems, deleteItemFromBasket }) => {
 				<ul className={s.headerRight}>
 					<li onClick={basketVisibilityHandler}>
 						<img src={BasketSVG} alt="Basket" />
-						<span className={s.count}>0 руб.</span>
+						<span className={s.totalPrice}>Корзина пуста</span>
 					</li>
 					<li>
 						<NavLink to="/favorites">
