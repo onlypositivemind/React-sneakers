@@ -16,6 +16,7 @@ const Basket = ({
 	basketURL,
 	ordersURL,
 	setOrdersItems,
+	totalPrice,
 }) => {
 	
 	const [orderCompleted, setOrderCompleted] = useState(false);
@@ -42,9 +43,15 @@ const Basket = ({
 		e.stopPropagation();
 	};
 	
-	return isOpen && (
-		<div className={s.overlay} onClick={basketVisibilityHandler}>
-			<div className={s.drawer} onClick={stopPropagation}>
+	return (
+		<div
+			className={isOpen ? `${s.overlay} ${s.active}` : `${s.overlay}`}
+			onClick={basketVisibilityHandler}
+		>
+			<div
+				className={isOpen ? `${s.drawer} ${s.active}` : `${s.drawer}`}
+				onClick={stopPropagation}
+			>
 				<div className={s.top}>
 					<p className={s.title}>Корзина</p>
 					<button
@@ -76,8 +83,10 @@ const Basket = ({
 							</div>
 							<div className={s.bottom}>
 								<ul>
-									<li>Итого:<span>21 498 руб.</span></li>
-									<li>Налог 5%:<span>1074 руб.</span></li>
+									<li>Итого:<span>{totalPrice()} руб.</span></li>
+									<li>Налог 5%:
+										<span>{Math.round(totalPrice() * 0.05)} руб.</span>
+									</li>
 								</ul>
 								<Button onClick={completedOrderHandler}>Оформить заказ</Button>
 							</div>

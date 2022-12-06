@@ -100,17 +100,21 @@ const App = () => {
 		}
 	};
 	
+	const totalPrice = () => basketItems.reduce((acc, obj) => acc += obj.price, 0);
+	
 	return (
 		<Routes>
 			<Route path="/" element={
 				<Layout
 					sneakersData={sneakersData}
+					favoritesItems={favoritesItems}
 					basketItems={basketItems}
 					setBasketItems={setBasketItems}
 					deleteItemFromBasket={deleteItemFromBasket}
 					basketURL={basketURL}
 					ordersURL={ordersURL}
 					setOrdersItems={setOrdersItems}
+					totalPrice={totalPrice}
 				/>}
 			>
 				<Route index element={
