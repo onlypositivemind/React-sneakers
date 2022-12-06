@@ -11,11 +11,13 @@ const mainURL = 'https://638a04874eccb986e8a12dca.mockapi.io';
 const allSneakersURL = `${mainURL}/all-sneakers`;
 const basketURL = `${mainURL}/basket`;
 const favoritesURL = `${mainURL}/favorites`;
+const ordersURL = `${mainURL}/orders`;
 
 const App = () => {
 	const [sneakersData, setSneakersData] = useState([]);
 	const [basketItems, setBasketItems] = useState([]);
 	const [favoritesItems, setFavoritesItems] = useState([]);
+	const [ordersItems, setOrdersItems] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	
 	useEffect(() => {
@@ -24,9 +26,11 @@ const App = () => {
 				const allItemsRes = await axios.get(allSneakersURL);
 				const basketItemsRes = await axios.get(basketURL);
 				const favItemsRes = await axios.get(favoritesURL);
+				const ordersItemsRes = await axios.get(ordersURL);
 				
 				setBasketItems(basketItemsRes.data);
 				setFavoritesItems(favItemsRes.data);
+				setOrdersItems(ordersItemsRes.data);
 				setSneakersData(allItemsRes.data);
 			} catch (error) {
 				alert('Не удалось загрузить данные');
@@ -102,7 +106,11 @@ const App = () => {
 				<Layout
 					sneakersData={sneakersData}
 					basketItems={basketItems}
+					setBasketItems={setBasketItems}
 					deleteItemFromBasket={deleteItemFromBasket}
+					basketURL={basketURL}
+					ordersURL={ordersURL}
+					setOrdersItems={setOrdersItems}
 				/>}
 			>
 				<Route index element={
@@ -126,7 +134,12 @@ const App = () => {
 						isLoading={isLoading}
 					/>}
 				/>
-				<Route path="orders" element={<Orders />} />
+				<Route path="orders" element={
+					<Orders
+						ordersItems={ordersItems}
+						isLoading={isLoading}
+					/>}
+				/>
 				<Route path="*" element={<NotFound />} />
 			</Route>
 		</Routes>

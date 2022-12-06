@@ -1,0 +1,15 @@
+.orders {
+	padding: 0 60px 40px;
+
+	h2 {
+		margin-bottom: 40px;
+		font-weight: 700;
+		font-size: var(--font-size-xxl);
+	}
+}
+
+.cardsWrapper {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 210px);
+	gap: 40px;
+}

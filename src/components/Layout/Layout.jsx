@@ -7,7 +7,14 @@ import HeartSVG from '../../shared/images/icons/heart.svg';
 import UserSVG from '../../shared/images/icons/user.svg';
 import s from './Layout.module.scss';
 
-const Layout = ({ basketItems, deleteItemFromBasket }) => {
+const Layout = ({
+	basketItems,
+	setBasketItems,
+	deleteItemFromBasket,
+	basketURL,
+	ordersURL,
+	setOrdersItems,
+}) => {
 	const [isOpen, setIsOpen] = useState(false);
 	
 	const basketVisibilityHandler = () => {
@@ -22,7 +29,11 @@ const Layout = ({ basketItems, deleteItemFromBasket }) => {
 				isOpen={isOpen}
 				basketVisibilityHandler={basketVisibilityHandler}
 				basketItems={basketItems}
+				setBasketItems={setBasketItems}
 				deleteItemFromBasket={deleteItemFromBasket}
+				basketURL={basketURL}
+				ordersURL={ordersURL}
+				setOrdersItems={setOrdersItems}
 			/>
 			
 			<header className={s.header}>

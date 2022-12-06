@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import axios from 'axios';
 import Button from '../../components/Button/Button';
 import BasketCard from '../../components/BasketCard/BasketCard';
 import BasketTemplate from '../BasketTemplate/BasketTemplate';
@@ -9,8 +11,32 @@ const Basket = ({
 	isOpen,
 	basketVisibilityHandler,
 	basketItems,
-	deleteItemFromBasket
+	setBasketItems,
+	deleteItemFromBasket,
+	basketURL,
+	ordersURL,
+	setOrdersItems,
 }) => {
+	
+	const [orderCompleted, setOrderCompleted] = useState(false);
+	
+	const completedOrderHandler = async () => {
+		setOrderCompleted(true);
+		try {
+			await axios.post(ordersURL, { item: basketItems, });
+			
+			setBasketItems([]);
+			
+			const { data } = await axios.get(ordersURL);
+			setOrdersItems(data);
+			
+			for (const item of basketItems) {
+				await axios.delete(`${basketURL}/${item.route}`);
+			}
+		} catch (error) {
+			alert('Не удалось оформить заказ');
+		}
+	};
 	
 	const stopPropagation = (e) => {
 		e.stopPropagation();
@@ -28,23 +54,17 @@ const Basket = ({
 						&#128939;
 					</button>
 				</div>
-				
 				{
 					!basketItems.length
 						?
 						<BasketTemplate
-							title="Корзина пустая"
-							subtitle="Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ"
-							image={BasketImg}
+							title={orderCompleted ? 'Заказ оформлен!' : 'Корзина пустая'}
+							subtitle={orderCompleted
+								? 'Ваш заказ скоро будет передан курьерской доставке'
+								: 'Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ'}
+							image={orderCompleted ? OrderSentImg : BasketImg}
 							basketVisibilityHandler={basketVisibilityHandler}
 						/>
-						// ?
-						// <BasketTemplate
-						// 	title="Заказ оформлен!"
-						// 	subtitle="Ваш заказ скоро будет передан курьерской доставке"
-						// 	image={OrderSentImg}
-						// 	basketVisibilityHandler={basketVisibilityHandler}
-						// />
 						:
 						<div className={s.content}>
 							<div className={s.cardsWrapper}>
@@ -59,11 +79,10 @@ const Basket = ({
 									<li>Итого:<span>21 498 руб.</span></li>
 									<li>Налог 5%:<span>1074 руб.</span></li>
 								</ul>
-								<Button>Оформить заказ</Button>
+								<Button onClick={completedOrderHandler}>Оформить заказ</Button>
 							</div>
 						</div>
 				}
-			
 			</div>
 		</div>
 	);
