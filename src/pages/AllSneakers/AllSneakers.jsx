@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import MainCard from '../../components/MainCard/MainCard';
+import CardLoader from '../../components/CardLoader/CardLoader';
+import TitleLoader from '../../components/TitleLoader/TitleLoader';
 import SearchSVG from '../../shared/images/icons/search.svg';
 import s from './AllSneakers.module.scss';
-import CardLoader from '../../components/CardLoader/CardLoader';
 
 const AllSneakers = ({
 	sneakersData,
@@ -27,22 +28,24 @@ const AllSneakers = ({
 	return (
 		<section className={s.content}>
 			<div className={s.top}>
-				<h2>Все кроссовки</h2>
-				<div className={s.searchBlock}>
-					<img src={SearchSVG} alt="Search icon" />
-					{searchValue &&
-						<button onClick={clearSearchInput}>
-							&#128939;
-						</button>}
-					<input
-						type="text"
-						placeholder="Поиск..."
-						value={searchValue}
-						onChange={searchInputHandler}
-					/>
-				</div>
+				{isLoading ? <TitleLoader /> : <h2>Все кроссовки</h2>}
+				{
+					isLoading
+						? <TitleLoader />
+						: <div className={s.searchBlock}>
+							<img src={SearchSVG} alt="Search icon" />
+							{searchValue &&
+								<button onClick={clearSearchInput}>&#128939;</button>}
+							<input
+								type="text"
+								placeholder="Поиск..."
+								value={searchValue}
+								onChange={searchInputHandler}
+							/>
+						</div>
+				}
 			</div>
-			<div className="cards-wrapper">
+			<div className={s.cardsWrapper}>
 				{
 					isLoading
 						? <CardLoader />

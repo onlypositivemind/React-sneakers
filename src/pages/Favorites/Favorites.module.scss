@@ -31,3 +31,9 @@
 		font-size: var(--font-size-xxl);
 	}
 }
+
+.cardsWrapper {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 210px);
+	gap: 40px;
+}

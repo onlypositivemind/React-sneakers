@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import MainCard from '../../components/MainCard/MainCard';
 import CardLoader from '../../components/CardLoader/CardLoader';
+import TitleLoader from '../../components/TitleLoader/TitleLoader';
 import Emoji from '../../shared/images/emoji-favorite.png';
 import s from './Favorites.module.scss';
 
@@ -22,9 +23,9 @@ const Favorites = ({
 	return (
 		isLoading
 			? <section className={s.favorites}>
-				<h2>Мои закладки</h2>
-				<div className="cards-wrapper">
-					<CardLoader qty={3} />
+				<h2><TitleLoader /></h2>
+				<div className={s.cardsWrapper}>
+					<CardLoader />
 				</div>
 			</section>
 			: !favoritesItems.length
@@ -36,7 +37,7 @@ const Favorites = ({
 				</section>
 				: <section className={s.favorites}>
 					<h2>Мои закладки</h2>
-					<div className="cards-wrapper">
+					<div className={s.cardsWrapper}>
 						{
 							favoritesItems.map(item => <MainCard
 								key={item.id}
@@ -51,6 +52,7 @@ const Favorites = ({
 					</div>
 				</section>
 	);
+	
 };
 
 export default Favorites;

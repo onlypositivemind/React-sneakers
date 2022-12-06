@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, } from 'react';
 import axios from 'axios';
 import Layout from './components/Layout/Layout';
 import AllSneakers from './pages/AllSneakers/AllSneakers';
@@ -97,41 +97,39 @@ const App = () => {
 	};
 	
 	return (
-		<>
-			<Routes>
-				<Route path="/" element={
-					<Layout
+		<Routes>
+			<Route path="/" element={
+				<Layout
+					sneakersData={sneakersData}
+					basketItems={basketItems}
+					deleteItemFromBasket={deleteItemFromBasket}
+				/>}
+			>
+				<Route index element={
+					<AllSneakers
 						sneakersData={sneakersData}
 						basketItems={basketItems}
+						favoritesItems={favoritesItems}
+						addItemToBasket={addItemToBasket}
 						deleteItemFromBasket={deleteItemFromBasket}
+						addItemToFavorite={addItemToFavorite}
+						deleteItemFromFavorite={deleteItemFromFavorite}
+						isLoading={isLoading}
 					/>}
-				>
-					<Route index element={
-						<AllSneakers
-							sneakersData={sneakersData}
-							basketItems={basketItems}
-							favoritesItems={favoritesItems}
-							addItemToBasket={addItemToBasket}
-							deleteItemFromBasket={deleteItemFromBasket}
-							addItemToFavorite={addItemToFavorite}
-							deleteItemFromFavorite={deleteItemFromFavorite}
-							isLoading={isLoading}
-						/>}
-					/>
-					<Route path="favorites" element={
-						<Favorites
-							favoritesItems={favoritesItems}
-							addItemToBasket={addItemToBasket}
-							deleteItemFromBasket={deleteItemFromBasket}
-							deleteItemFromFavorite={deleteItemFromFavorite}
-							isLoading={isLoading}
-						/>}
-					/>
-					<Route path="orders" element={<Orders />} />
-					<Route path="*" element={<NotFound />} />
-				</Route>
-			</Routes>
-		</>
+				/>
+				<Route path="favorites" element={
+					<Favorites
+						favoritesItems={favoritesItems}
+						addItemToBasket={addItemToBasket}
+						deleteItemFromBasket={deleteItemFromBasket}
+						deleteItemFromFavorite={deleteItemFromFavorite}
+						isLoading={isLoading}
+					/>}
+				/>
+				<Route path="orders" element={<Orders />} />
+				<Route path="*" element={<NotFound />} />
+			</Route>
+		</Routes>
 	);
 };
 

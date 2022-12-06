@@ -52,3 +52,11 @@
 		}
 	}
 }
+
+.cardsWrapper {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 210px);
+	justify-content: center;
+	align-items: center;
+	gap: 40px;
+}
