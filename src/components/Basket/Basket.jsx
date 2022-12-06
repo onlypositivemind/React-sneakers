@@ -1,6 +1,8 @@
 import Button from '../../components/Button/Button';
-import BasketImg from '../../shared/images/basket.jpg';
 import BasketCard from '../../components/BasketCard/BasketCard';
+import BasketTemplate from '../BasketTemplate/BasketTemplate';
+import BasketImg from '../../shared/images/basket.jpg';
+import OrderSentImg from '../../shared/images/order-sent.jpg';
 import s from './Basket.module.scss';
 
 const Basket = ({
@@ -29,16 +31,22 @@ const Basket = ({
 				
 				{
 					!basketItems.length
-						? <div className={s.template}>
-							<img src={BasketImg} alt="Basket" />
-							<p className={s.templateTitle}>Корзина пустая</p>
-							<p className={s.templateSubtitle}>
-								Добавьте хотя бы одну пару
-								кроссовок, чтобы сделать заказ
-							</p>
-							<Button onClick={basketVisibilityHandler}>Закрыть корзину</Button>
-						</div>
-						: <div className={s.content}>
+						?
+						<BasketTemplate
+							title="Корзина пустая"
+							subtitle="Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ"
+							image={BasketImg}
+							basketVisibilityHandler={basketVisibilityHandler}
+						/>
+						// ?
+						// <BasketTemplate
+						// 	title="Заказ оформлен!"
+						// 	subtitle="Ваш заказ скоро будет передан курьерской доставке"
+						// 	image={OrderSentImg}
+						// 	basketVisibilityHandler={basketVisibilityHandler}
+						// />
+						:
+						<div className={s.content}>
 							<div className={s.cardsWrapper}>
 								{basketItems.map(item => <BasketCard
 									key={item.id}

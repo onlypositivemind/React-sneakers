@@ -1,9 +1,8 @@
-import { useNavigate } from 'react-router-dom';
-import Button from '../../components/Button/Button';
+import InfoTemplate from '../../components/InfoTemplate/InfoTemplate';
 import MainCard from '../../components/MainCard/MainCard';
 import CardLoader from '../../components/CardLoader/CardLoader';
 import TitleLoader from '../../components/TitleLoader/TitleLoader';
-import Emoji from '../../shared/images/emoji-favorite.png';
+import EmojiFav from '../../shared/images/emoji-favorite.png';
 import s from './Favorites.module.scss';
 
 const Favorites = ({
@@ -14,11 +13,6 @@ const Favorites = ({
 	deleteItemFromFavorite,
 	isLoading,
 }) => {
-	const navigate = useNavigate();
-	
-	const goBack = () => {
-		navigate(-1);
-	};
 	
 	return (
 		isLoading
@@ -29,12 +23,11 @@ const Favorites = ({
 				</div>
 			</section>
 			: !favoritesItems.length
-				? <section className={s.content}>
-					<img className={s.emoji} src={Emoji} alt="emoji" />
-					<p className={s.title}>Закладок нет :(</p>
-					<p className={s.subtitle}>Вы ничего не добавляли в закладки</p>
-					<Button onClick={goBack}>Вернуться назад</Button>
-				</section>
+				? <InfoTemplate
+					title="Закладок нет :("
+					subtitle="Вы ничего не добавляли в закладки"
+					image={EmojiFav}
+				/>
 				: <section className={s.favorites}>
 					<h2>Мои закладки</h2>
 					<div className={s.cardsWrapper}>
