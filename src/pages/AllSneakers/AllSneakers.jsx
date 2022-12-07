@@ -45,7 +45,7 @@ const AllSneakers = ({
 						</div>
 				}
 			</div>
-			<div className={s.cardsWrapper}>
+			<div className="cards-wrapper">
 				{
 					isLoading
 						? <CardLoader />

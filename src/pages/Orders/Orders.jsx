@@ -11,7 +11,7 @@ const Orders = ({ ordersItems, isLoading }) => {
 		isLoading
 			? <section className={s.orders}>
 				<h2><TitleLoader /></h2>
-				<div className={s.cardsWrapper}>
+				<div className="cards-wrapper">
 					<CardLoader />
 				</div>
 			</section>
@@ -23,7 +23,7 @@ const Orders = ({ ordersItems, isLoading }) => {
 				/>
 				: <section className={s.orders}>
 					<h2>Мои покупки</h2>
-					<div className={s.cardsWrapper}>
+					<div className="cards-wrapper">
 						{
 							ordersItems.map(obj => obj.item.map((item, i) => <OrderCard
 								key={i} {...item} />))

@@ -1,5 +1,6 @@
 .content {
-	padding-top: clamp(1.875rem, calc(-2.599rem + 22.37vw), 12.5rem);
+	padding-top: clamp(0rem, calc(-4.286rem + 21.43vw), 15rem);
+	padding-bottom: 20px;
 	display: grid;
 	place-items: center;
 }
@@ -17,7 +18,12 @@
 }
 
 .subtitle {
+	text-align: center;
 	margin-bottom: 70px;
 	font-size: var(--font-size-m);
-	color: var(--subtitle-color-main)
+	color: var(--subtitle-color-main);
+
+	@media (max-width: 375px) {
+		margin-bottom: 25px;
+	}
 }

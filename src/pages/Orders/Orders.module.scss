@@ -1,15 +1,9 @@
 .orders {
-	padding: 0 60px 40px;
+	padding: 0 clamp(0.938rem, calc(-1.071rem + 10.04vw), 3.75rem) clamp(0.938rem, calc(-0.179rem + 5.58vw), 2.5rem);
 
 	h2 {
 		margin-bottom: 38px;
 		font-weight: 700;
 		font-size: var(--font-size-xxl);
 	}
-}
-
-.cardsWrapper {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, 210px);
-	gap: 40px;
 }

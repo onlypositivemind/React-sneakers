@@ -18,7 +18,7 @@ const Favorites = ({
 		isLoading
 			? <section className={s.favorites}>
 				<h2><TitleLoader /></h2>
-				<div className={s.cardsWrapper}>
+				<div className="cards-wrapper">
 					<CardLoader />
 				</div>
 			</section>
@@ -30,7 +30,7 @@ const Favorites = ({
 				/>
 				: <section className={s.favorites}>
 					<h2>Мои закладки</h2>
-					<div className={s.cardsWrapper}>
+					<div className="cards-wrapper">
 						{
 							favoritesItems.map(item => <MainCard
 								key={item.id}

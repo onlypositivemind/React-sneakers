@@ -106,7 +106,6 @@ const App = () => {
 	const isItemInBasket = (id) => basketItems.find(obj => obj.id === id) && true;
 	
 	return (
-		
 		<Routes>
 			<Route path="/" element={
 				<Layout
@@ -138,13 +137,18 @@ const App = () => {
 				}
 				/>
 				<Route path="favorites" element={
-					<Favorites
-						favoritesItems={favoritesItems}
-						addItemToBasket={addItemToBasket}
-						deleteItemFromBasket={deleteItemFromBasket}
-						deleteItemFromFavorite={deleteItemFromFavorite}
-						isLoading={isLoading}
-					/>}
+					<BasketItemsContext.Provider value={{ isItemInBasket }}>
+						
+						<Favorites
+							favoritesItems={favoritesItems}
+							addItemToBasket={addItemToBasket}
+							deleteItemFromBasket={deleteItemFromBasket}
+							deleteItemFromFavorite={deleteItemFromFavorite}
+							isLoading={isLoading}
+						/>
+					
+					</BasketItemsContext.Provider>
+				}
 				/>
 				<Route path="orders" element={
 					<Orders

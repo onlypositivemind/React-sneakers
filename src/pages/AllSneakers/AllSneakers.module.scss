@@ -1,5 +1,5 @@
 .content {
-	padding: 0 60px 40px;
+	padding: 0 clamp(0.938rem, calc(-1.071rem + 10.04vw), 3.75rem) clamp(0.938rem, calc(-0.179rem + 5.58vw), 2.5rem);
 
 	h2 {
 		font-weight: 700;
@@ -12,6 +12,11 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		gap: 15px;
+	}
 }
 
 .searchBlock {
@@ -51,12 +56,4 @@
 			border-color: var(--button-color-main);
 		}
 	}
-}
-
-.cardsWrapper {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, 210px);
-	justify-content: center;
-	align-items: center;
-	gap: 40px;
 }
