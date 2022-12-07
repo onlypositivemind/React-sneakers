@@ -6,6 +6,7 @@ import AllSneakers from './pages/AllSneakers/AllSneakers';
 import Favorites from './pages/Favorites/Favorites';
 import Orders from './pages/Orders/Orders';
 import NotFound from './pages/NotFound/NotFound';
+import BasketItemsContext from './basket-items-context';
 
 const mainURL = 'https://638a04874eccb986e8a12dca.mockapi.io';
 const allSneakersURL = `${mainURL}/all-sneakers`;
@@ -92,19 +93,20 @@ const App = () => {
 	const deleteItemFromFavorite = async (id) => {
 		try {
 			const route = favoritesItems.find(item => item.id === id).route;
-			const { data } = await axios.delete(`${favoritesURL}/${route}`);
+			setFavoritesItems(prev => prev.filter(item => item.id !== id));
 			
-			if (data) {
-				setFavoritesItems(prev => prev.filter(item => item.id !== id));
-			}
+			await axios.delete(`${favoritesURL}/${route}`);
 		} catch (error) {
 			alert('Не удалось удалить из избранного');
 		}
 	};
 	
-	const totalPrice = () => basketItems.reduce((acc, obj) => acc += obj.price, 0);
+	const totalPrice = () => basketItems.reduce((acc, obj) => acc + obj['price'], 0);
+	
+	const isItemInBasket = (id) => basketItems.find(obj => obj.id === id) && true;
 	
 	return (
+		
 		<Routes>
 			<Route path="/" element={
 				<Layout
@@ -120,16 +122,20 @@ const App = () => {
 				/>}
 			>
 				<Route index element={
-					<AllSneakers
-						sneakersData={sneakersData}
-						basketItems={basketItems}
-						favoritesItems={favoritesItems}
-						addItemToBasket={addItemToBasket}
-						deleteItemFromBasket={deleteItemFromBasket}
-						addItemToFavorite={addItemToFavorite}
-						deleteItemFromFavorite={deleteItemFromFavorite}
-						isLoading={isLoading}
-					/>}
+					<BasketItemsContext.Provider value={{ isItemInBasket }}>
+						
+						<AllSneakers
+							sneakersData={sneakersData}
+							favoritesItems={favoritesItems}
+							addItemToBasket={addItemToBasket}
+							deleteItemFromBasket={deleteItemFromBasket}
+							addItemToFavorite={addItemToFavorite}
+							deleteItemFromFavorite={deleteItemFromFavorite}
+							isLoading={isLoading}
+						/>
+					
+					</BasketItemsContext.Provider>
+				}
 				/>
 				<Route path="favorites" element={
 					<Favorites

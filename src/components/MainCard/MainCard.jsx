@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import BasketItemsContext from '../../basket-items-context';
 import UnLikedSVG from '../../shared/images/icons/heart.svg';
 import LikedSVG from '../../shared/images/icons/heart-liked.svg';
 import UnSelectedSVG from '../../shared/images/icons/btn-plus.svg';
@@ -10,23 +11,23 @@ const MainCard = ({
 	name,
 	price,
 	imageURL,
-	inBasket = false,
 	inFavorite = false,
 	addItemToBasket,
 	deleteItemFromBasket,
 	addItemToFavorite,
 	deleteItemFromFavorite,
 }) => {
-	const [selected, setSelected] = useState(inBasket);
+	
+	const { isItemInBasket } = useContext(BasketItemsContext);
+	
 	const [favorite, setFavorite] = useState(inFavorite);
 	
 	const selectHandler = (id) => {
-		if (!selected) {
+		if (!isItemInBasket(id)) {
 			addItemToBasket(id);
 		} else {
 			deleteItemFromBasket(id);
 		}
-		setSelected(!selected);
 	};
 	
 	const favoriteHandler = (id) => {
@@ -54,7 +55,7 @@ const MainCard = ({
 					<p className={s.priceValue}>{price} руб.</p>
 				</div>
 				<img
-					src={selected ? SelectedSVG : UnSelectedSVG}
+					src={isItemInBasket(id) ? SelectedSVG : UnSelectedSVG}
 					className={s.bottomBtn}
 					alt="Add to basket"
 					onClick={() => selectHandler(id)}

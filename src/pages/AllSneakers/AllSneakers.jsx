@@ -7,7 +7,6 @@ import s from './AllSneakers.module.scss';
 
 const AllSneakers = ({
 	sneakersData,
-	basketItems,
 	favoritesItems,
 	addItemToBasket,
 	deleteItemFromBasket,
@@ -15,6 +14,7 @@ const AllSneakers = ({
 	deleteItemFromFavorite,
 	isLoading,
 }) => {
+	
 	const [searchValue, setSearchValue] = useState('');
 	
 	const searchInputHandler = (e) => {
@@ -53,7 +53,6 @@ const AllSneakers = ({
 						.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()))
 						.map(item => <MainCard
 							key={item.id}
-							inBasket={basketItems.some(obj => obj.id === item.id)}
 							inFavorite={favoritesItems.some(obj => obj.id === item.id)}
 							addItemToBasket={addItemToBasket}
 							deleteItemFromBasket={deleteItemFromBasket}
