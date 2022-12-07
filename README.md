@@ -4,6 +4,6 @@ ___
 
 Реализовано добавление, удаление товаров в корзину и в избранное.
 Поиск товара по названию, оформление заказа и отрисовка заказов на странице
-профиля. При медленном интернете появляется preloader (react-loading-skeleton)
+профиля. При медленном интернете появляется preloader (react-loading-skeleton).
 ___
-REACT 💥 REACT-ROUTER 💥 REACT-HOOKS 💥 CSS MODULES 💥
+##### REACT 💥 REACT-ROUTER 💥 REACT-HOOKS 💥 CSS MODULES 💥
