@@ -18,10 +18,12 @@ const Layout = ({
 	totalPrice,
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [orderCompleted, setOrderCompleted] = useState(false);
 	
 	const basketVisibilityHandler = () => {
 		!isOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = null;
 		setIsOpen(!isOpen);
+		setOrderCompleted(false);
 	};
 	
 	return (
@@ -33,6 +35,8 @@ const Layout = ({
 				basketItems={basketItems}
 				setBasketItems={setBasketItems}
 				deleteItemFromBasket={deleteItemFromBasket}
+				orderCompleted={orderCompleted}
+				setOrderCompleted={setOrderCompleted}
 				basketURL={basketURL}
 				ordersURL={ordersURL}
 				setOrdersItems={setOrdersItems}
@@ -61,9 +65,9 @@ const Layout = ({
 						<NavLink to="/favorites">
 							<img src={HeartSVG} alt="Favorites" />
 							<span
-								className={!!favoritesItems.length ? `${s.favCount} ${s.active}` : s.favCount}
+								className={favoritesItems.length ? `${s.favCount} ${s.active}` : s.favCount}
 							>
-								{favoritesItems.length}
+								{!!favoritesItems.length && favoritesItems.length}
 							</span>
 						</NavLink>
 					</li>

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import axios from 'axios';
 import Button from '../../components/Button/Button';
 import BasketCard from '../../components/BasketCard/BasketCard';
@@ -13,13 +12,13 @@ const Basket = ({
 	basketItems,
 	setBasketItems,
 	deleteItemFromBasket,
+	orderCompleted,
+	setOrderCompleted,
 	basketURL,
 	ordersURL,
 	setOrdersItems,
 	totalPrice,
 }) => {
-	
-	const [orderCompleted, setOrderCompleted] = useState(false);
 	
 	const completedOrderHandler = async () => {
 		setOrderCompleted(true);

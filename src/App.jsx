@@ -23,10 +23,12 @@ const App = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const allItemsRes = await axios.get(allSneakersURL);
-				const basketItemsRes = await axios.get(basketURL);
-				const favItemsRes = await axios.get(favoritesURL);
-				const ordersItemsRes = await axios.get(ordersURL);
+				const [allItemsRes, basketItemsRes, favItemsRes, ordersItemsRes] = await Promise.all([
+					axios.get(allSneakersURL),
+					axios.get(basketURL),
+					axios.get(favoritesURL),
+					axios.get(ordersURL),
+				]);
 				
 				setBasketItems(basketItemsRes.data);
 				setFavoritesItems(favItemsRes.data);
