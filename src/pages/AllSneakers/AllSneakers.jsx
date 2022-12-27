@@ -25,6 +25,15 @@ const AllSneakers = ({
 		setSearchValue('');
 	};
 	
+	if (!isLoading && !sneakersData.length) {
+		return (
+			<selection className={s.error}>
+				<p>К сожалению, не удалось получить данные :(</p>
+				<p>Попробуйте повторить попытку позже</p>
+			</selection>
+		);
+	}
+	
 	return (
 		<section className={s.content}>
 			<div className={s.top}>
